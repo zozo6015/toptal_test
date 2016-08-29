@@ -6,6 +6,8 @@ ENV			DEBIAN_FRONTEND noninteractive
 
 RUN 		apt-get update
 
+RUN			apt-get install -y --force-yes apt-utils
+
 RUN 		apt-get upgrade -y --force-yes
 
 RUN 		apt-get install -y --force-yes mariadb-server php5 php5-cli php5-mysql php5-fpm curl wget sudo
