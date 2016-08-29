@@ -18,3 +18,8 @@ RUN 		wget http://nginx.org/keys/nginx_signing.key -O - | apt-key add - && \
 
 RUN			apt-get update && \
 			apt-get -y --force-yes install nginx
+
+RUN			sed -i 's/^listen.owner.*/listen.owner\ =\ nginx/g' /etc/php5/fpm/pool.d/www.conf && \
+			sed -i 's/^listen.group.*/listen.group\ =\ nginx/g' /etc/php5/fpm/pool.d/www.conf && \
+			sed -i 's/^user.*/user\ =\ nginx/g' /etc/php5/fpm/pool.d/www.conf && \
+			sed -i 's/^group.*/group\ =\ nginx/g' /etc/php5/fpm/pool.d/www.conf
