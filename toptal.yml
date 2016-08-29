@@ -4,6 +4,7 @@
     docroot: /opt/toptal/siteconf
     image: toptal
     tag: test
+    domain: some_domain
   tasks:
   - name: Install apt packages
     apt:
@@ -32,6 +33,19 @@
     file:
       dest={{ '{{' }} docroot {{ '}}' }}
       state=directory
+      owner=root
+      group=root
+      mode="u=rwx,g=rwx"
+  - name: Add site config
+    template:
+      src=/opt/toptal/toptal_test/conf/domain.j2
+      dest=/opt/toptal/siteconf/{{ domain }}.conf
+      owner=root
+      group=root
+  - name: Adding sites files
+    copy:
+      src=/opt/toptal/toptal_test/webroot
+      dest=/opt/toptal/webroot
       owner=root
       group=root
       mode="u=rwx,g=rwx"

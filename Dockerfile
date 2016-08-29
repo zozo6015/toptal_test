@@ -10,7 +10,7 @@ RUN			apt-get install -y --force-yes apt-utils
 
 RUN 		apt-get upgrade -y --force-yes
 
-RUN 		apt-get install -y --force-yes mariadb-server php5 php5-cli php5-mysql php5-mysqli php5-fpm curl wget sudo
+RUN 		apt-get install -y --force-yes mariadb-server php5 php5-cli php5-mysql php5-fpm curl wget sudo
 
 RUN 		wget http://nginx.org/keys/nginx_signing.key -O - | apt-key add - && \
 			echo "deb http://nginx.org/packages/mainline/debian/ jessie nginx" | tee -a /etc/apt/sources.list.d/nginx.list && \
