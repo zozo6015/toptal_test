@@ -1,0 +1,39 @@
+---
+- hosts: local
+  vars:
+    docroot: /opt/toptal/siteconf
+    image: toptal
+    tag: test
+  tasks:
+  - name: Install apt packages
+    apt:
+      pkg=git,python-pip
+      state=installed
+      update_cache=true
+  - name: fixing PIP
+    shell: easy_install -U pip
+  - name: Install docker-py
+    pip:
+      name=docker-py
+  - name: create project directory
+    file:
+      dest=/opt/toptal
+      state=directory
+      owner=root
+      group=root
+      mode="u=rwx,g=rwx"
+  - name: Downloading the git repository
+    git:
+      repo=https://github.com/zozo6015/toptal_test.git
+      dest=/opt/toptal/toptal_test
+      clone=yes 
+      update=yes
+  - name: Creating the docroot
+    file:
+      dest={{ '{{' }} docroot {{ '}}' }}
+      state=directory
+      owner=root
+      group=root
+      mode="u=rwx,g=rwx"
+  - name: Creating docker image for toptal test
+    shell: docker build -t "{{ image }}:{{ tag }}" /opt/toptal/toptal_test
