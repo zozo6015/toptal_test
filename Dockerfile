@@ -36,6 +36,5 @@ RUN			chown -R nginx. /var/www/some_domain && \
 
 EXPOSE 		80
 
-CMD  ["/usr/bin/start_services.sh"]
+ENTRYPOINT /usr/bin/start_services.sh
 
-ENTRYPOINT	/bin/bash
