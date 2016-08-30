@@ -34,8 +34,7 @@ RUN			chown -R nginx. /var/www/some_domain && \
 			rm -rf /etc/nginx/conf.d/default.conf && \
 			chmod +x /usr/bin/start_services.sh
 
-ADD  		toptal_test/conf/monit/monitrc /etc/monit/monitrc
-ADD  		toptal_test/conf/monit/conf.d /etc/monit/conf.d
+ADD  		toptal_test/conf/supervisord/supervisord.conf /etc/supervisor/supervisord.conf
 
 EXPOSE 		80
 
