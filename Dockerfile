@@ -33,4 +33,6 @@ RUN			chmod +x /usr/bin/start_services.sh
 
 EXPOSE 80
 
-ENTRYPOINT	[ "/bin/bash", "/usr/bin/start_services.sh" ]
+CMD			["/etc/init.d/php5-fpm", "start"]
+CMD			["/etc/init.d/mysql", "start"]
+CMD			["/etc/init.d/nginx", "start"]
