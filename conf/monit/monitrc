@@ -1,0 +1,12 @@
+set logfile /var/log/monit.log
+set idfile /var/lib/monit/id
+set statefile /var/lib/monit/state
+set eventqueue
+    basedir /var/lib/monit/events # set the base directory where events will be stored
+    slots 100                     # optionally limit the queue size
+set httpd port 2812
+    use address 0.0.0.0
+    alow 0.0.0.0/0.0.0.0
+    allow admin:monit
+
+include /etc/monit/conf.d/*
