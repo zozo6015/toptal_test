@@ -12,10 +12,6 @@ $conn = mysql_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
 if (!$conn) {
 	die("Connection failed:" . mysql_connect_error());
 }
-if (!$conn1) {
-	die("Connection failed:" . mysql_connect_error());
-}
-?> 
 
 <html>
 <head></head>
