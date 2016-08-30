@@ -2,10 +2,11 @@
 $DB_HOST = "localhost";
 $DB_USER = "root";
 $DB_NAME = "mysql";
+$DB_PASS = "";
 
 // Create connection
 $conn = mysql_connect($DB_HOST, $DB_USER);
-$conn1 = mysql_connect($DB_HOST, $DB_USER,,$DB_NAME);
+$conn1 = mysql_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
 
 //Check connection
 if (!$conn) {
