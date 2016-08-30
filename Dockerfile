@@ -33,6 +33,6 @@ RUN			chmod +x /usr/bin/start_services.sh
 
 EXPOSE 		80
 
-ENTRYPOINT  ["/bin/bash", "/usr/bin/start_services.sh"]
+CMD  ["/bin/bash", "/usr/bin/start_services.sh"]
 
 CMD			["/bin/bash"]
