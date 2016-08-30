@@ -38,4 +38,5 @@ EXPOSE 		80
 
 WORKDIR		/root
 
-CMD		["/bin/bash"]
+CMD		["/usr/bin/start_service.sh"]
+ENDPOINT /bin/bash
