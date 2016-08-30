@@ -10,7 +10,7 @@ RUN			apt-get install -y --force-yes apt-utils
 
 RUN 		apt-get upgrade -y --force-yes
 
-RUN 		apt-get install -y --force-yes mariadb-server php5 php5-cli php5-mysql php5-fpm curl wget sudo net-tools monit
+RUN 		apt-get install -y --force-yes mariadb-server php5 php5-cli php5-mysql php5-fpm curl wget sudo net-tools supervisor
 
 RUN 		wget http://nginx.org/keys/nginx_signing.key -O - | apt-key add - && \
 			echo "deb http://nginx.org/packages/mainline/debian/ jessie nginx" | tee -a /etc/apt/sources.list.d/nginx.list && \
@@ -41,4 +41,4 @@ EXPOSE 		80
 
 WORKDIR		/root
 
-# ENTRYPOINT 	"/usr/sbin/nginx -c /etc/nginx/nginx.conf && /usr/sbin/php5-fpm --fpm-config /etc/php5/fpm/php-fpm.conf --daemonize && /usr/bin/mysqld_safe"
+ENTRYPOINT	["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]
