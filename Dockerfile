@@ -38,4 +38,4 @@ EXPOSE 		80
 
 WORKDIR		/root
 
-ENTRYPOINT 	"/usr/sbin/nginx -c /etc/nginx/nginx.conf && /usr/sbin/php5-fpm --fpm-config /etc/php5/fpm/php-fpm.conf --daemonize && /usr/bin/mysqld_safe"
+# ENTRYPOINT 	"/usr/sbin/nginx -c /etc/nginx/nginx.conf && /usr/sbin/php5-fpm --fpm-config /etc/php5/fpm/php-fpm.conf --daemonize && /usr/bin/mysqld_safe"
