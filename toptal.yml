@@ -31,7 +31,7 @@
       update=yes
   - name: Creating the docroot
     file:
-      dest={{ '{{' }} docroot {{ '}}' }}
+      dest={{ docroot }}
       state=directory
       owner=root
       group=root
@@ -39,7 +39,7 @@
   - name: Add site config
     template:
       src=/opt/toptal/toptal_test/conf/domain.j2
-      dest=/opt/toptal/siteconf/{{ domain }}.conf
+      dest=/opt/toptal/toptal_test/siteconf/{{ domain }}.conf
       owner=root
       group=root
   - name: Adding sites files
