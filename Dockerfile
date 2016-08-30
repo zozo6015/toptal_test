@@ -25,7 +25,6 @@ RUN			sed -i 's/^listen.owner.*/listen.owner\ =\ nginx/g' /etc/php5/fpm/pool.d/w
 			sed -i 's/^group.*/group\ =\ nginx/g' /etc/php5/fpm/pool.d/www.conf
 
 ADD         siteconf/some_domain.conf /etc/nginx/conf.d/some_domain.conf
-VOLUME      /opt/toptal/webroot /var/www/some_domain
 ADD     	start_services.sh /usr/bin/start_services.sh
 RUN			chown -R nginx.nginx /var/www/some_domain
 
@@ -33,6 +32,4 @@ RUN			chmod +x /usr/bin/start_services.sh
 
 EXPOSE 80
 
-#CMD			["/etc/init.d/php5-fpm", "start"]
-#CMD			["/etc/init.d/mysql", "start"]
-#CMD			["/etc/init.d/nginx", "start"]
+ENTRYPOINT	["/bin/bash", "/usr/bin/start_services.sh"]
