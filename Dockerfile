@@ -37,5 +37,3 @@ RUN			chown -R nginx. /var/www/some_domain && \
 EXPOSE 		80
 
 WORKDIR		/root
-
-ENTRYPOINT	"/usr/sbin/php5-fpm --fpm-config /etc/php5/fpm/php-fpm.conf --daemonize && /usr/sbin/nginx -c /etc/nginx/nginx.conf && /usr/bin/mysqld_safe "
