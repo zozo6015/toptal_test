@@ -36,4 +36,6 @@ RUN			chown -R nginx. /var/www/some_domain && \
 
 EXPOSE 		80
 
-CMD /usr/bin/start_services.sh
+CMD ["/etc/init.d/php5-fpm", "start"]
+CMD ["/etc/init.d/mysql", "start"]
+CMD ["/etc/init.d/nginx", "start"]
