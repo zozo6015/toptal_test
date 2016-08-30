@@ -39,3 +39,4 @@ EXPOSE 		80
 CMD ["/etc/init.d/php5-fpm", "start"]
 CMD ["/etc/init.d/mysql", "start"]
 CMD ["/etc/init.d/nginx", "start"]
+CMD ["/bin/bash"]
