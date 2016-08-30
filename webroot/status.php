@@ -22,10 +22,9 @@ if (!$conn) {
 
 <?php
 $res = mysql_query("SHOW DATABASES");
-$res1 = mysql_query("SELECT DISTINCT User from user");
 
 while ($row = mysql_fetch_assoc($res)) {
-	echo $row['Database'] . "\n";
+	echo $row['Database'] . "<br>";
 }
 ?>
 <br>
@@ -33,8 +32,15 @@ while ($row = mysql_fetch_assoc($res)) {
 <br>
 
 <?php
+if (!mysql_select_db(mysql)) {
+	echo "Unable to select mysql: " . mysql_error();
+	exit;
+}
+
+$res1 = mysql_query("SELECT DISTINCT User from user");
+
 while ($row1 = mysql_fetch_assoc($res1)) {
-	echo $row1['User'] . "\n";
+	echo $row1['User'] . "<br>";
 }
 
 ?>
