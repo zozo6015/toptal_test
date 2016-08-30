@@ -31,4 +31,6 @@ RUN			chown -R nginx.nginx /var/www/some_domain
 
 RUN			chmod +x /usr/bin/start_services.sh
 
+EXPOSE 80
+
 ENTRYPOINT	[ "/bin/bash", "/usr/bin/start_services.sh" ]
