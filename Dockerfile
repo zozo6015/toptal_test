@@ -38,4 +38,4 @@ EXPOSE 		80
 
 WORKDIR		/root
 
-ENTRYPOINT	/usr/bin/start_service.sh
+ENTRYPOINT	["/usr/sbin/php5-fpm", "--fpm-config", "/etc/php5/fpm/php-fpm.conf", "--daemonize", "&&", "/usr/bin/mysqld_safe", "&", "&&", "/usr/sbin/nginx", "-c", "/etc/nginx/nginx.conf", "-g", \"daemon off;"\"]
