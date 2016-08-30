@@ -1,7 +1,7 @@
 ---
 - hosts: local
   vars:
-    docroot: /opt/toptal/siteconf
+    docroot: /opt/toptal/toptal_test/siteconf
     image: toptal
     tag: test
     domain: some_domain
@@ -36,10 +36,18 @@
       owner=root
       group=root
       mode="u=rwx,g=rwx"
+  - name: Linking the Dockerfile to the running folder
+    copy:
+      src=/opt/toptal/toptal_test/Dockerfile
+      dest=/opt/toptal/Dockerfile
+  - name: Linking the startup_service script to the running folder
+    copy:
+      src=/opt/toptal/toptal_test/start_services.sh
+      dest=/opt/toptal/start_services.sh
   - name: Add site config
     template:
       src=/opt/toptal/toptal_test/conf/domain.j2
-      dest=/opt/toptal/toptal_test/siteconf/{{ domain }}.conf
+      dest=/opt/toptal/siteconf/{{ domain }}.conf
       owner=root
       group=root
   - name: Adding sites files
@@ -50,4 +58,11 @@
       group=root
       mode="u=rwx,g=rwx"
   - name: Creating docker image for toptal test
-    shell: docker build -t "{{ image }}:{{ tag }}" /opt/toptal/toptal_test
+    shell: docker build -t "{{ image }}:{{ tag }}" /opt/toptal
+  - name: Creating a container from created image
+    docker_container:
+      name: {{ domain }}
+      image: {{ image }}:{{ tag }}
+      state: started
+      ports:
+        - "80:80"
