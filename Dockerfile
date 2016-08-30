@@ -29,6 +29,6 @@ ADD     	start_services.sh /usr/bin/start_services.sh
 
 RUN			chmod +x /usr/bin/start_services.sh
 
-EXPOSE 
+EXPOSE 		80
 
 CMD			["/bin/bash"]
