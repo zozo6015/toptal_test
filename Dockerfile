@@ -23,3 +23,11 @@ RUN			sed -i 's/^listen.owner.*/listen.owner\ =\ nginx/g' /etc/php5/fpm/pool.d/w
 			sed -i 's/^listen.group.*/listen.group\ =\ nginx/g' /etc/php5/fpm/pool.d/www.conf && \
 			sed -i 's/^user.*/user\ =\ nginx/g' /etc/php5/fpm/pool.d/www.conf && \
 			sed -i 's/^group.*/group\ =\ nginx/g' /etc/php5/fpm/pool.d/www.conf
+
+ADD         /opt/toptal/siteconf/some_domain.conf /etc/nginx/conf.d/some_domain.conf
+VOLUME      /opt/toptal/webroot /var/www/some_domain
+ADD     	/opt/toptal/toptal_test/start_services.sh start_services.sh
+
+CMD			start_services.sh
+
+ENTRYPOINT	sh
