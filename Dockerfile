@@ -26,14 +26,11 @@ RUN			sed -i 's/^listen.owner.*/listen.owner\ =\ nginx/g' /etc/php5/fpm/pool.d/w
 
 ADD         siteconf/some_domain.conf /etc/nginx/conf.d/some_domain.conf
 
-ADD     	start_services.sh /usr/bin/start_services.sh
-
 VOLUME		/opt/toptal/webroot/ /var/www/some_domain
 
 RUN			chown -R nginx. /var/www/some_domain && \
-			rm -rf /etc/nginx/conf.d/default.conf && \
-			chmod +x /usr/bin/start_services.sh
-
+			rm -rf /etc/nginx/conf.d/default.conf
+			
 ADD  		toptal_test/conf/supervisord/supervisord.conf /etc/supervisor/supervisord.conf
 
 EXPOSE 		80
